@@ -1,0 +1,66 @@
+# our things go here
+*_pb2.py
+*.pb.cc
+*.pb.h
+*.so
+*.hd
+*.d
+*.o
+*.pyc
+core
+*~
+*.sw?
+!/tools/visualizations/local_click/Visualizer.swf
+!/tools/visualizations/distributed_click/Visualizer.swf
+tags
+.tags*
+*.sublime-workspace
+*cscope*
+*.o.cmd
+*.ko.cmd
+*.ko
+*.a
+perf.data
+perf.data.old
+ethtool-*
+stat-*
+asm
+*.asm
+*.htmlTEMP
+xia.mk
+.DS_Store
+*.dSYM
+.fuse*
+*.gch
+
+# directories
+key
+
+# ignore session layer files on this branch only
+api/session
+applications/example/session
+daemons/session
+applications/example/videos/
+daemons/xroute/xrouted
+daemons/xcidrouted/bin/*
+daemons/xcidrouted/log
+!daemons/xcidrouted/bin/cleanup.sh
+!daemons/xcidrouted/bin/getmap.sh
+!daemons/xcidrouted/bin/getworkload.sh
+!daemons/xcidrouted/bin/startrouted.sh
+daemons/xcidrouted/stats/
+arada/waveserver/waveserver
+
+# output from scripts
+etc/click/host*.click
+etc/click/router*.click
+etc/click/dual_stack_host*.click
+etc/click/dual_stack_router*.click
+
+# planetlab
+experiments/planetlab/logs/*.txt
+experiments/planetlab/logs/tunneling
+experiments/planetlab/logs/fourid
+
+key/*
+

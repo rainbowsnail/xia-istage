@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# simple script to attach gdb to a running click process
+#
+echo xdebug [process name]
+echo attach gdb to a running click process
+echo defaults to click
+
+name=click
+[ "$1" != "" ] && name=$1
+
+xpid=$(pgrep $name)
+[ "$xpid" == "" ] && echo "$name process not found" && exit
+
+sudo gdb $name $xpid

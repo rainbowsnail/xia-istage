@@ -1,0 +1,59 @@
+0. Prerequisite
+
+  * Ubuntu (preferably >= 11.04)
+
+
+Host/Guest machine preparation
+==============================
+
+1. Install necessary packages to both host machines
+
+  $ sudo aptitude -R install qemu-kvm		# for qemu/kvm
+  $ sudo aptitude -R install python-vm-builder	# for vmbuilder
+  $ sudo aptitude -R rsync
+
+2. Generate an SSH key pair that root @ guest will accept
+
+  $ ssh-keygen -t rsa -N "" -f id_rsa_vm
+
+3. Create a virtual machine image with a guest OS installed (this takes around 11 minutes)
+
+  $ sudo vmbuilder kvm ubuntu --rootsize=1024 --swapsize=0 --ssh-key=id_rsa_vm.pub --addpkg=openssh-server --addpkg=rsync --addpkg=psmisc --addpkg=libprotobuf6 --hostname=guest --user=xia --pass=xia --rootpass=xia --suite=natty
+
+
+Click on host
+=============
+
+1. Build userlevel click on a host machine (which is referred to by common.sh)
+
+
+Click on guest
+==============
+
+1. Power on the guest
+
+  $ ./start_local_guest.sh
+
+2. Copy click to the guest and run it
+
+  $ ./run_ping_server.sh
+
+
+Click on client
+===============
+
+1. Run ping client (on an external client machine, as specified in xia-core/click-2.0/conf/xia/xia_vm_common.click)
+
+ $ ./run_ping_client.sh
+
+
+Live migration
+==============
+1. Begin migration from A to B (can be executed on either host)
+
+  $ ./migrate_to_hostB.sh
+
+2. Begin migration from B to A (can be executed on either host)
+
+  $ ./migrate_to_hostA.sh
+
